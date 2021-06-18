@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.lang.*;
 
 public class TicTacToe {
 
@@ -26,6 +27,7 @@ public class TicTacToe {
                 System.out.println("Select a position between 1 and 9");
                 int playerPos = scan.nextInt();
                 while (playerPositions.contains(playerPos) || cpuPositions.contains(playerPos)) {
+                    System.out.println("Contains another piece! Try another position.");
                     playerPos = scan.nextInt();
                 }
                 placePiece(gameBoard, playerPos, "player");
@@ -39,6 +41,7 @@ public class TicTacToe {
                 Random rand = new Random();
                 int cpuPos = rand.nextInt(9) + 1;
                 while (playerPositions.contains(cpuPos) || cpuPositions.contains(cpuPos)) {
+                    System.out.println("Contains another piece! Try another position.");
                     cpuPos = rand.nextInt(9) + 1;
                 }
                 placePiece(gameBoard, cpuPos, "cpu");
@@ -52,10 +55,10 @@ public class TicTacToe {
                 }
 
                 System.out.println(result);
-            }        System.out.println("Do you want to play again? Y/N");
+            }        System.out.println("Do you want to play again? yes or no");
             replay.nextLine();
             String answer = replay.nextLine();
-            if (answer.equalsIgnoreCase("y")) playing = true;
+            if(answer.equalsIgnoreCase("y")) playing = true;
             else playing = false;
         }
 
